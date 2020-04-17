@@ -149,15 +149,13 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim17);
   /* USER CODE END 2 */
 
-  /* USER CODE END 2 */
-
-   /* Infinite loop */
-   /* USER CODE BEGIN WHILE */
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
    while (1)
    {
-   /* USER CODE END WHILE */
+  /* USER CODE END WHILE */
 
-   /* USER CODE BEGIN 3 */
+  /* USER CODE BEGIN 3 */
 
  	  if (DrapeauFourche)
  	  {
@@ -216,7 +214,7 @@ int main(void)
 
  			  /* mettre a zero le compteur de TIM17 */
  			  // ecrire le code ici
- 			  TIM3->CNT &= 0x0000;
+ 			  TIM17->CNT &= 0x0000;
 
  			  /* Demarrer le Timer TIM17 */
  			  // ecrire le code en dessous
@@ -264,7 +262,7 @@ int main(void)
  	  }
 
    }
-   /* USER CODE END 3 */
+  /* USER CODE END 3 */
 
 }
 
@@ -415,6 +413,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /**/
+  HAL_I2CEx_EnableFastModePlus(SYSCFG_CFGR1_I2C_FMP_PB8);
+
+  /**/
+  HAL_I2CEx_EnableFastModePlus(SYSCFG_CFGR1_I2C_FMP_PB9);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI4_15_IRQn, 0, 0);
