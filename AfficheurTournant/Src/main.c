@@ -40,7 +40,7 @@
 #include "stm32f0xx_hal.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "LibCaracteres.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -235,8 +235,8 @@ int main(void)
 
  			  /* realiser affichage d'une colonne */
  			  // ecrire le code en dessous
- 			  GPIOA->ODR &= 0x00;
- 		  	  GPIOA->ODR |= (Motif_Afficheur [CompteurColonne]);
+ 			  GPIOA->ODR &= 0xFF;
+ 		  	  GPIOA->ODR &= (Motif_Afficheur [CompteurColonne]);
 
  			  /* preparer pour l'affichage de la colonne suivante */
  			  // ecrire le code en dessous
@@ -323,7 +323,7 @@ static void MX_TIM3_Init(void)
   TIM_MasterConfigTypeDef sMasterConfig;
 
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 1;
+  htim3.Init.Prescaler = 2;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 8333;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -353,7 +353,7 @@ static void MX_TIM17_Init(void)
 {
 
   htim17.Instance = TIM17;
-  htim17.Init.Prescaler = 359;
+  htim17.Init.Prescaler = 360;
   htim17.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim17.Init.Period = 0xFFFF;
   htim17.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
