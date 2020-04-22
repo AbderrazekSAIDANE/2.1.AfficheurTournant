@@ -235,7 +235,7 @@ int main(void)
 
  			  /* realiser affichage d'une colonne */
  			  // ecrire le code en dessous
- 			  GPIOA->ODR &= 0xFF;
+ 			  GPIOA->ODR |= 0xFF;
  		  	  GPIOA->ODR &= (Motif_Afficheur [CompteurColonne]);
 
  			  /* preparer pour l'affichage de la colonne suivante */
